@@ -6,8 +6,6 @@ Comments your meta code.
 
   require 'mcc'
 
-  require 'mcc'
-
   params = ARGV.inject({}) do |hash, arg|
     key, value = arg.split(/=/)
     hash[key] = value
@@ -20,11 +18,12 @@ Comments your meta code.
 
   $ mcc key1=value key2=value < my_meta_code
 
-== Installation
+== Installation (not yet)
 
   gem install meta_code_commenter
 
 == Authors
+
 * Peter Suschlik
 
 == TODO
