@@ -18,6 +18,36 @@ Comments your meta code.
 
   $ mcc key1=value key2=value < my_meta_code
 
+=== Example
+
+  $ cat code 
+  def #{name}(proc=nil, &blk)              
+    proc ||= blk                           
+    @#{name} = Proc.new do |ptr,data,len|  
+      if data                              
+        proc.call(data.get_string(0, len)) 
+      else                                 
+        proc.call                          
+      end                                  
+      @abort ? 1 : 0                       
+    end                                    
+    @parser[:#{name}] = @#{name}           
+  end                                      
+
+  $ mcc name=on_headers < code 
+  def #{name}(proc=nil, &blk)                 # def name(proc=nil, &blk)              
+    proc ||= blk                              #   proc ||= blk                           
+    @#{name} = Proc.new do |ptr,data,len|     #   @name = Proc.new do |ptr,data,len|  
+      if data                                 #     if data                              
+        proc.call(data.get_string(0, len))    #       proc.call(data.get_string(0, len)) 
+      else                                    #     else                                 
+        proc.call                             #       proc.call                          
+      end                                     #     end                                  
+      @abort ? 1 : 0                          #     @abort ? 1 : 0                       
+    end                                       #   end                                    
+    @parser[:#{name}] = @#{name}              #   @parser[:name] = @name           
+  end                                         # end                                      
+
 == Installation (not yet)
 
   gem install meta_code_commenter
