@@ -1,11 +1,5 @@
 require 'helper'
 
-class String
-  def deindent
-    gsub(/^\s*/, '')
-  end
-end
-
 context "Generates output" do
   def asserts_output(description, input, expected, args={})
     input.chomp!
