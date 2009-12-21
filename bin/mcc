@@ -1,0 +1,9 @@
+require 'mcc'
+
+params = ARGV.inject({}) do |hash, arg|
+  key, value = arg.split(/=/)
+  hash[key] = value
+  hash
+end
+
+puts MetaCodeCommenter.comment(STDIN.readlines)

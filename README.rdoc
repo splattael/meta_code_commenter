@@ -1,0 +1,33 @@
+= Meta code commenter (mcc)
+
+Comments your meta code.
+
+== Usage
+
+  require 'mcc'
+
+  require 'mcc'
+
+  params = ARGV.inject({}) do |hash, arg|
+    key, value = arg.split(/=/)
+    hash[key] = value
+    hash
+  end
+
+  puts MetaCodeCommenter.comment(STDIN.readlines)
+
+=== Command line
+
+  $ mcc key1=value key2=value < my_meta_code
+
+== Installation
+
+  gem install meta_code_commenter
+
+== Authors
+* Peter Suschlik
+
+== TODO
+
+* Fix failing test (double quotes don't work yet)
+* Use thor or something or mcc
